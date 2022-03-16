@@ -1,0 +1,66 @@
+﻿@model Beauty_Store.Models.Admin
+
+@{
+    ViewBag.Title = "AdminDashBoard";
+}
+
+<fieldset>
+    <legend>UserDashBoard</legend>
+    @if (Session["adminName"] != null && Session["adminPassword"] != null)
+    {
+        <h1>Welcome @Session["adminName"]</h1>
+        <br>
+        <table class="table table-bordered table-striped table-hover">
+            <tr>
+                <th style="color:blueviolet">@Html.DisplayNameFor(u => u.admin_name)</th>
+                <td style="font-family: cursive">@Session["adminName"].ToString()</td>
+            </tr>
+            <tr>
+                <th style="color:blueviolet">@Html.DisplayNameFor(u => u.password)</th>
+                <td style="font-family: cursive">@Session["adminPassword"].ToString()</td>
+            </tr>
+            <tr>
+                <th style="color:blueviolet">@Html.DisplayNameFor(u => u.email)</th>
+                <td style="font-family: cursive">@Session["adminEmail"].ToString()</td>
+            </tr>
+            <tr>
+                <th style="color:blueviolet">@Html.DisplayNameFor(u => u.phoneNo)</th>
+                <td style="font-family: cursive">@Session["adminPhoneNo"].ToString()</td>
+            </tr>
+            <tr>
+                <th style="color:blueviolet">Edit</th>
+                <td>@Html.ActionLink("Edit", "Edit", new { id = Convert.ToInt32(Session["adminID"]) }, null)</td>
+            </tr>
+        </table>
+    }
+</fieldset>
+<h4>Select a Category:</h4>
+
+<div>@Html.ActionLink("Perfume", "getPerfumeForAdmin", "product")</div>
+<div>@Html.ActionLink("Skin Care Products", "getSKForAdmin", "product")</div>
+<div>@Html.ActionLink("Bags", "getBagsForAdmin", "product")</div>
+<div>@Html.ActionLink("Accessories", "getAccForAdmin", "product")</div>
+<div>@Html.ActionLink("Shoes", "getShoesForAdmin", "product")</div>
+<br /><br />
+
+<div>
+    <input type="button" value="Change Delivery Status" style="background-color: bisque; width:300px;
+                border-radius:7px;font-weight:bold; font-family: cursive;"
+           onclick="window.location= '@Url.Action( "changeDeliveryStatus", "sale")'" />
+</div>
+<div>
+    <input type="button" value="Show Complains" style="background-color: bisque; width:300px;
+                border-radius:7px;font-weight:bold; font-family: cursive;"
+           onclick="window.location= '@Url.Action( "showComplains", "complain")'" />
+</div>
+<div>
+    @Html.ActionLink("Add Admin", "addAdmin", "admin")
+</div>
+<div>
+    @Html.ActionLink("Log out", "login", "admin")
+</div>
+<br /><br />
+<div>
+    @Html.ActionLink("Lock Profile", "lockProfile", "admin")
+</div>
+

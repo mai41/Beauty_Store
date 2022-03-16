@@ -1,0 +1,30 @@
+﻿@model Beauty_Store.Models.sale
+
+
+@{
+    ViewBag.Title = "changeDeliveryStatus";
+}
+
+<fieldset>
+    <legend>Change Delivery Status</legend>
+    <form method="post" action="" novalidate="novalidate">
+        <div class="form-group">
+            @Html.DisplayNameFor(u => u.sale_code)<br />
+            @Html.EditorFor(u => u.sale_code, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(u => u.sale_code, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            <input type="submit" value="Change" style="background-color: bisque;
+                   border-radius:7px;font-weight:bold; font-family: cursive;" />
+        </div>
+    </form>
+</fieldset>
+<br />
+<div>
+    <input type="submit" value="back" style="background-color: bisque;
+                   border-radius:7px;font-weight:bold; font-family: cursive;"
+           onclick="window.location= '@Url.Action( "AdminDashBoard", "admin")'" />
+</div>
+<br /><br /><div>
+    @Html.ActionLink("Log out", "login", "admin")
+</div>

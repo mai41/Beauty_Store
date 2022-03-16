@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Beauty_Store.Models.user>
+
+@{
+    ViewBag.Title = "CustomerInfo";
+}
+
+<fieldset>
+    <legend>Customer Information</legend>
+    <br />
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>@Html.DisplayNameFor(u => u.user_name)</th>
+            <th>@Html.DisplayNameFor(u => u.address)</th>
+            <th>@Html.DisplayNameFor(u => u.city)</th>
+            <th>@Html.DisplayNameFor(u => u.email)</th>
+            <th>@Html.DisplayNameFor(u => u.phoneNo)</th>
+        </tr>
+
+        @foreach (Beauty_Store.Models.user user in Model)
+        {
+            <tr>
+                <td style="font-family: cursive">@Html.DisplayFor(u => user.user_name)</td>
+                <td style="font-family: cursive">@Html.DisplayFor(u => user.address)</td>
+                <td style="font-family: cursive">@Html.DisplayFor(u => user.city)</td>
+                <td style="font-family: cursive">@Html.DisplayFor(u => user.email)</td>
+                <td style="font-family: cursive">@Html.DisplayFor(u => user.phoneNo)</td>
+            </tr>
+        }
+    </table>
+
+    <br /><div>
+        <input type="button" value="back" style="background-color: bisque; width:300px;
+                border-radius:7px;font-weight:bold; font-family: cursive;"
+               onclick="window.location= '@Url.Action( "AdminDashBoard", "admin")'" />
+    </div>
+</fieldset>
+<br /><br /><div>
+    @Html.ActionLink("Log out", "login", "admin")
+</div>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Beauty_Store.Models.complain>
+
+@{
+    ViewBag.Title = "Complains";
+}
+
+<fieldset>
+    <legend>Complains</legend><br />
+    <br />
+    @using (Html.BeginForm("showComplains", "complain", FormMethod.Get))
+    {
+        <b>Get Complain: </b><br />
+        @Html.RadioButton("option", "Late delivery")<text>Late delivery</text><br />
+        @Html.RadioButton("option", "Delivery Man didn't Serve Me Well")<text>Delivery Man didn't Serve Me Well</text><br />
+        @Html.RadioButton("option", "I have Recieved Wrong Product(s)")<text>I have Recieved Wrong Product(s)</text><br />
+        @Html.RadioButton("option", "Something Else")<text>Something Else</text><br />
+        <input type="submit" name="submit" value="Get" style="background-color: bisque;
+                   border-radius:7px;font-weight:bold; font-family: cursive;"/>
+    }
+    <br />
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>@Html.DisplayNameFor(c => c.complain1)</th>
+            <th>@Html.DisplayNameFor(c => c.saleCode)</th>
+        </tr>
+
+        @foreach (Beauty_Store.Models.complain complain in Model)
+        {
+            <tr>
+                <td style="font-family: cursive">@Html.DisplayFor(c => complain.complain1)</td>
+                <td style="font-family: cursive">@Html.DisplayFor(c => complain.saleCode)</td>
+            </tr>
+        }
+
+    </table>
+    <b style="font-family: cursive">Number of Complains: @Session["noOfComp"]</b>
+</fieldset>
+<br /><div>
+    <input type="submit" value="Back" style="background-color: bisque; width:300px;
+                   border-radius:7px;font-weight:bold; font-family: cursive;"
+           onclick="window.location= '@Url.Action( "AdminDashBoard", "admin")'" />
+</div>
+<br /><br /><div>
+    @Html.ActionLink("Log out", "login", "admin")
+</div>

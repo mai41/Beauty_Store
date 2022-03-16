@@ -1,0 +1,81 @@
+﻿@model Beauty_Store.Models.product
+
+@{
+    ViewBag.Title = "AddProduct";
+    List<SelectListItem> Type = new List<SelectListItem>();
+    Type.Add(new SelectListItem
+    {
+        Text = "perfume",
+        Value = "perfume"
+    });
+    Type.Add(new SelectListItem
+    {
+        Text = "skin care",
+        Value = "skin care"
+    });
+    Type.Add(new SelectListItem
+    {
+        Text = "bags",
+        Value = "bags"
+    });
+    Type.Add(new SelectListItem
+    {
+        Text = "accessories",
+        Value = "accessories"
+    });
+    Type.Add(new SelectListItem
+    {
+        Text = "shoes",
+        Value = "shoes"
+    });
+}
+
+<fieldset>
+    <legend>Add Product</legend>
+    <form method="post" action="" novalidate="novalidate">
+        <div class="form-group">
+            @Html.DisplayNameFor(a => a.product_name)<br />
+            @Html.EditorFor(a => a.product_name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(a => a.product_name, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(a => a.product_type)<br />
+            @Html.DropDownListFor(a => a.product_type, Type, "--Select--", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.product_type, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(a => a.price)<br />
+            @Html.EditorFor(a => a.price, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(a => a.price, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(a => a.year)<br />
+            @Html.EditorFor(a => a.year, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(a => a.year, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(a => a.discount_per)<br />
+            @Html.EditorFor(a => a.discount_per, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(a => a.discount_per, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(a => a.shipping_exp)<br />
+            @Html.EditorFor(a => a.shipping_exp, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(a => a.shipping_exp, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            <input type="submit" value="Add Product" style="background-color: bisque; width:300px;
+                  border-radius:7px;font-weight:bold; font-family: cursive;box-sizing: border-box;"/>
+        </div>
+    </form>
+</fieldset>
+<br />
+<div>
+    <input type="button" value="Back To DashBoard" style="background-color: bisque; width:300px;
+                  border-radius:7px;font-weight:bold; font-family: cursive;box-sizing: border-box;"
+           onclick="window.location= '@Url.Action( "AdminDashBoard", "admin")'" />
+</div>
+<div>
+    @Html.ActionLink("Log out", "login", "admin")
+</div>
+

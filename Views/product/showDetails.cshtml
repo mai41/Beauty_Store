@@ -1,0 +1,60 @@
+﻿@model Beauty_Store.Models.product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<fieldset>
+    <legend>@Html.DisplayFor(a => a.product_name)</legend>
+
+    <table>
+        <tr>
+            <td><img src="~/Images/@Html.DisplayFor(a=>a.product_img)" width="300" height="300" /></td>
+            <th>
+                @if (Html.DisplayFor(a => a.year).ToString() != "" && int.Parse(Html.DisplayFor(a => a.year).ToString()) >= 2020)
+                {
+                    <input type="button" value="New" style="background-color:burlywood;font-family:cursive" /><br /><br />
+                }
+                <div style="color:blueviolet">@Html.DisplayNameFor(a => a.product_name)</div>
+                <div style="font-family: cursive">@Html.DisplayFor(a => a.product_name)</div><br />
+                <div style="color:blueviolet">@Html.DisplayNameFor(a => a.price)</div>
+                <div style="font-family: cursive">@Html.DisplayFor(a => a.price)</div><br />
+                @if (Html.DisplayFor(a => a.year).ToString() != "")
+                {
+                    <div style="color:blueviolet">@Html.DisplayNameFor(a => a.year)</div>
+                    <div style="font-family: cursive">@Html.DisplayFor(a => a.year)</div><br />
+                }
+                @if (Html.DisplayFor(a => a.discount_per).ToString() != "")
+                {
+                    <div style="color:blueviolet">@Html.DisplayNameFor(a => a.discount_per)</div>
+                    <div style="font-family: cursive">
+                        <text>-</text>@Html.DisplayFor(a => a.discount_per)
+                        <text>%</text>
+                    </div><br />
+                }
+                @if (Html.DisplayFor(a => a.shipping_exp).ToString() != "")
+                {
+                    <div style="color:blueviolet">@Html.DisplayNameFor(a => a.shipping_exp)</div>
+                    <div style="font-family: cursive">@Html.DisplayFor(a => a.shipping_exp)</div>
+                }
+            </th>
+        </tr>
+    </table>
+
+    <br />
+    <div>
+        <input type="button" value="buy" style="background-color: bisque; width:300px;
+                  border-radius:7px;font-weight:bold; font-family: cursive;box-sizing: border-box;"
+               onclick="window.location= '@Url.Action( "makeSale", "sale")'" />
+    </div><br />
+    <div>
+        <input type="button" value="Back to DashBoard" style="background-color: bisque; width:300px;
+                  border-radius:7px;font-weight:bold; font-family: cursive;box-sizing: border-box;"
+               onclick="window.location= '@Url.Action( "userDashBoard", "user")'" />
+    </div>
+
+</fieldset>
+<br /><br /><div>
+    @Html.ActionLink("Log out", "login", "user")
+</div>

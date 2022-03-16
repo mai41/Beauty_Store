@@ -1,0 +1,73 @@
+﻿@model Beauty_Store.Models.user
+
+@{
+    ViewBag.Title = "UserDashBoardSignup";
+}
+
+<fieldset>
+    <legend>UserDashBoard</legend>
+    @if (Session["userName"] != null && Session["password"] != null && Session["address"] != null
+         && Session["email"] != null && Session["phoneNo"] != null)
+    {
+        <h1>Welcome @Session["userName"]</h1>
+        <br>
+        <table class="table table-bordered table-striped table-hover">
+            <tr>
+                <th style="color:blueviolet">@Html.DisplayNameFor(u => u.user_name)</th>
+                <td style="font-family: cursive">@Session["userName"].ToString()</td>
+            </tr>
+            <tr>
+                <th style="color:blueviolet">@Html.DisplayNameFor(u => u.password)</th>
+                <td style="font-family: cursive">@Session["password"].ToString()</td>
+            </tr>
+            <tr>
+                <th style="color:blueviolet">@Html.DisplayNameFor(u => u.address)</th>
+                <td style="font-family: cursive">@Session["address"].ToString()</td>
+            </tr>
+            <tr>
+                <th style="color:blueviolet">@Html.DisplayNameFor(u => u.city)</th>
+                <td style="font-family: cursive">@Session["city"].ToString()</td>
+            </tr>
+            <tr>
+                <th style="color:blueviolet">@Html.DisplayNameFor(u => u.email)</th>
+                <td style="font-family: cursive">@Session["email"].ToString()</td>
+            </tr>
+            <tr>
+                <th style="color:blueviolet">@Html.DisplayNameFor(u => u.phoneNo)</th>
+                <td style="font-family: cursive">@Session["phoneNo"].ToString()</td>
+            </tr>
+            <tr>
+                <th style="color:blueviolet">Edit</th>
+                <td>@Html.ActionLink("Edit", "Edit", new { id = Convert.ToInt32(Session["userID"]) }, null)</td>
+            </tr>
+        </table>
+    }
+</fieldset>
+<h4>Select a Category:</h4>
+
+<div>@Html.ActionLink("Perfume", "getPerfumeList", "product")</div>
+<div>@Html.ActionLink("Skin Care Products", "getSKList", "product")</div>
+<div>@Html.ActionLink("Bags", "getBagsList", "product")</div>
+<div>@Html.ActionLink("Accessories", "getAccList", "product")</div>
+<div>@Html.ActionLink("Shoes", "getShoesList", "product")</div>
+
+
+<br /><div>
+    <input type="button" value="Products I Bought" style="background-color: bisque; width:300px;
+                border-radius:7px;font-weight:bold; font-family: cursive;"
+           onclick="window.location= '@Url.Action( "showSales", "sale")'" />
+
+</div>
+<div>
+    <input type="button" value="Make Complain" style="background-color: bisque; width:300px;
+                border-radius:7px;font-weight:bold; font-family: cursive;"
+           onclick="window.location= '@Url.Action( "makeComplain", "complain")'" />
+
+</div><br />
+
+<div>
+    @Html.ActionLink("Log out", "login", "user")
+</div>
+
+
+

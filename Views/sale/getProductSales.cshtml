@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Beauty_Store.Models.sale>
+
+@{
+    ViewBag.Title = "relatedSales";
+}
+
+<fieldset>
+    <legend>Sales Related To This Product</legend>
+    <br />
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>@Html.DisplayNameFor(s => s.Date)</th>
+            <th>@Html.DisplayNameFor(s => s.no_of_products)</th>
+            <th>@Html.DisplayNameFor(s => s.sale_code)</th>
+            <th>@Html.DisplayNameFor(s => s.delivery_status)</th>
+            <th>Customer Information</th>
+        </tr>
+
+        @foreach (Beauty_Store.Models.sale sale in Model)
+        {
+        <tr>
+            <td style="font-family: cursive">@Html.DisplayFor(s => sale.Date)</td>
+            <td style="font-family: cursive">@Html.DisplayFor(s => sale.no_of_products)</td>
+            <td style="font-family: cursive">@Html.DisplayFor(s => sale.sale_code)</td>
+            <td style="font-family: cursive">@Html.DisplayFor(s => sale.delivery_status)</td>
+            <td>@Html.ActionLink("Info", "getCustomerInfo","user", new { userid =sale.userid},null)</td>
+        </tr>
+        }
+    </table>
+
+    <br /><div>
+        <input type="button" value="back" style="background-color: bisque; width:300px;
+                border-radius:7px;font-weight:bold; font-family: cursive;"
+               onclick="window.location= '@Url.Action( "AdminDashBoard", "admin")'" />
+    </div>
+</fieldset>
+<br /><br /><div>
+    @Html.ActionLink("Log out", "login", "admin")
+</div>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Beauty_Store.Models.product>
+
+@{
+    ViewBag.Title = "Products";
+}
+
+<fieldset>
+    <legend>Products</legend>
+    <br />
+    @using (Html.BeginForm("showSales", "sale", FormMethod.Get))
+    {
+        <b>Search Option: </b>@Html.RadioButton("option", "Product Name")<text>Product Name</text>
+        @Html.RadioButton("option", "Product Type")<text>Product Type</text>
+        @Html.RadioButton("option", "Price")<text>Price</text>
+        @Html.TextBox("search")
+        <input type="submit" name="submit" value="Search" />
+    }
+    <br />
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>@Html.DisplayNameFor(p => p.product_name)</th>
+            <th>@Html.DisplayNameFor(p => p.product_type)</th>
+            <th>@Html.DisplayNameFor(p => p.price)</th>
+            <th>@Html.DisplayNameFor(p => p.year)</th>
+            <th>@Html.DisplayNameFor(p => p.discount_per)</th>
+            <th>@Html.DisplayNameFor(p => p.shipping_exp)</th>
+            <th>@Html.DisplayNameFor(p => p.product_img)</th>
+            <th>Edit</th>
+            <th>Cancel</th>
+            <th>Code</th>
+        </tr>
+
+        @foreach (Beauty_Store.Models.product product in Model)
+        {
+            <tr>
+                <td style="font-family: cursive">@Html.DisplayFor(p => product.product_name)</td>
+                <td style="font-family: cursive">@Html.DisplayFor(p => product.product_type)</td>
+                <td style="font-family: cursive">@Html.DisplayFor(p => product.price)</td>
+                <td style="font-family: cursive">@Html.DisplayFor(p => product.year)</td>
+                <td style="font-family: cursive">@Html.DisplayFor(p => product.discount_per)</td>
+                <td style="font-family: cursive">@Html.DisplayFor(p => product.shipping_exp)</td>
+                <td><img src="~/Images/@product.product_img" width="200" height="200" /></td>
+                <td>@Html.ActionLink("Edit", "editSale", new { product_id = product.product_id })</td>
+                <td>@Html.ActionLink("Cancel", "cancelSale", new { product_id = product.product_id })</td>
+                <td>@Html.ActionLink("Code", "getCode", new { product_id = product.product_id })</td>
+            </tr>
+        }
+    </table>
+
+    <br /><div>
+        <input type="button" value="back" style="background-color: bisque; width:300px;
+                border-radius:7px;font-weight:bold; font-family: cursive;"
+               onclick="window.location= '@Url.Action( "UserDashBoard", "user")'" />
+    </div>
+</fieldset>
+<br /><br /><div>
+    @Html.ActionLink("Log out", "login", "user")
+</div>

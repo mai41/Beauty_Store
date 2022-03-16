@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Beauty_Store.Models.product>
+
+@{
+    ViewBag.Title = "Bags";
+}
+
+
+<fieldset>
+    <legend>Bags</legend>
+
+    <center>
+        <table>
+            <tr>
+                @foreach (Beauty_Store.Models.product pr in Model)
+                {
+                    <td><img src="~/Images/@pr.product_img" width="300" height="300" /></td>
+                    <td></td>
+                }
+            </tr>
+            <tr>
+                @foreach (Beauty_Store.Models.product pr in Model)
+                {
+                    <td style="font-family: cursive"><center><b>@pr.product_name</b></center></td>
+                    <td></td>
+                }
+            </tr>
+            <tr>
+                @foreach (Beauty_Store.Models.product pr in Model)
+                {
+                    <td>
+                        <center>
+                            <input type="button" value="Details" style="background-color: bisque;
+                                font-weight:bold; font-family: cursive;box-sizing: border-box; border-radius:7px;"
+                                   onclick="window.location= '@Url.Action( "showDetails", "product",new { product_id = pr.product_id })'" />
+                        </center>
+                    </td>
+                    <td></td>
+                }
+            </tr>
+        </table>
+    </center>
+
+    <br />
+    <div>
+        <input type="button" value="Back" style="background-color: bisque; width:300px;
+                  border-radius:7px;font-weight:bold; font-family: cursive;box-sizing: border-box;"
+               onclick="window.location= '@Url.Action( "userDashBoard", "user")'" />
+    </div>
+
+</fieldset>
+<br /><br /><div>
+    @Html.ActionLink("Log out", "login", "user")
+</div>

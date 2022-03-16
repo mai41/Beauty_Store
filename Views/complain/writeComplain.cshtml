@@ -1,0 +1,31 @@
+﻿@model Beauty_Store.Models.complain
+
+@{
+                /**/
+
+                ViewBag.Title = "writeComplain";
+}
+
+<fieldset>
+    <legend>Complains</legend><br />
+    <h3>What Is Your Complain About?</h3>
+    <br /><br />
+    @using (Html.BeginForm("writeComplain", "complain", FormMethod.Post))
+    {
+        @Html.TextBox("complain",null,new{style="height: 100px; width:300px"})<br /><br />
+        <div>
+            <input type="submit" name="submit" value="Make Complain"
+                   style="background-color: bisque; width:300px;
+                border-radius:7px;font-weight:bold; font-family: cursive;" />
+        </div>
+    }
+
+    <br /><div>
+        <input type="button" value="back" style="background-color: bisque; width:300px;
+                border-radius:7px;font-weight:bold; font-family: cursive;"
+               onclick="window.location= '@Url.Action( "makeComplain", "complain")'" />
+    </div>
+</fieldset>
+<br /><br /><div>
+    @Html.ActionLink("Log out", "login", "user")
+</div>

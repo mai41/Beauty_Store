@@ -1,0 +1,18 @@
+﻿@model Beauty_Store.Models.Admin
+
+@{
+                /**/
+
+                ViewBag.Title = "Admin Added Successfully";
+}
+
+<h3>You Added This Admin Successfully.</h3>
+
+<br />
+<br /> <input type="button" value="Back" style="background-color: bisque;
+                   border-radius:7px;font-weight:bold; font-family: cursive;"
+              onclick="window.location= '@Url.Action( "addAdmin", "admin")'" />
+
+<div>
+    @Html.ActionLink("Log out", "login", "admin")
+</div>

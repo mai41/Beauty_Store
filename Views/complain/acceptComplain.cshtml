@@ -1,0 +1,20 @@
+﻿@model Beauty_Store.Models.complain
+
+@{
+    ViewBag.Title = "writeComplain";
+}
+
+<fieldset>
+    <h3>Thank You For Helping us To Improve Our Website</h3>
+    <h5>We Are Sorry and We Promise Next Time Our Service'll Be Better :)</h5>
+    <br />
+
+    <div>
+        <input type="button" value="Back to Home Page" style="background-color: bisque; width:300px;
+                  border-radius:7px;font-weight:bold; font-family: cursive;box-sizing: border-box;"
+               onclick="window.location= '@Url.Action( "UserDashBoard", "user")'" />
+    </div>
+</fieldset>
+<br /><br /><div>
+    @Html.ActionLink("Log out", "login", "user")
+</div>

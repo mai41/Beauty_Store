@@ -1,0 +1,29 @@
+﻿@model Beauty_Store.Models.sale
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<fieldset>
+    <legend>Edit</legend>
+    <form method="post" action="" novalidate="novalidate">
+        <div class="form-group">
+            @Html.DisplayNameFor(a => a.no_of_products)<br />
+            @Html.EditorFor(a => a.no_of_products, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(a => a.no_of_products, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            <input type="submit" value="Edit" style="background-color: bisque;
+                   border-radius:7px;font-weight:bold; font-family: cursive;" />
+        </div>
+    </form>
+</fieldset>
+<br />
+<div>
+    <input type="submit" value="back" style="background-color: bisque;
+                   border-radius:7px;font-weight:bold; font-family: cursive;"
+           onclick="window.location= '@Url.Action( "showSales", "sale")'" />
+</div>
+<br /><br /><div>
+    @Html.ActionLink("Log out", "login", "user")
+</div>

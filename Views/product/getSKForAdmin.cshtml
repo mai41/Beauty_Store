@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Beauty_Store.Models.product>
+
+@{
+                /**/
+
+                ViewBag.Title = "Skin Care";
+}
+
+
+<fieldset>
+    <legend>Skin Care</legend>
+    <br />
+    @using (Html.BeginForm("getSKForAdmin", "product", FormMethod.Get))
+    {
+        <b>Search By Name: </b>
+        @Html.TextBox("search")
+        <input type="submit" name="submit" value="Search" />
+    }
+    <br />
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>@Html.DisplayNameFor(p => p.product_name)</th>
+            <th>@Html.DisplayNameFor(p => p.price)</th>
+            <th>@Html.DisplayNameFor(p => p.year)</th>
+            <th>@Html.DisplayNameFor(p => p.discount_per)</th>
+            <th>@Html.DisplayNameFor(p => p.shipping_exp)</th>
+            <th>@Html.DisplayNameFor(p => p.product_img)</th>
+            <th>Edit Product</th>
+            <th>Delete Product</th>
+            <th>Sales Related to Product</th>
+        </tr>
+        @foreach (Beauty_Store.Models.product pro in Model)
+        {
+            <tr>
+                <td style="font-family: cursive">@Html.DisplayFor(p => pro.product_name)</td>
+                <td style="font-family: cursive">@Html.DisplayFor(p => pro.price)</td>
+                <td style="font-family: cursive">@Html.DisplayFor(p => pro.year)</td>
+                <td style="font-family: cursive">@Html.DisplayFor(p => pro.discount_per)</td>
+                <td style="font-family: cursive">@Html.DisplayFor(p => pro.shipping_exp)</td>
+                <td><img src="~/Images/@pro.product_img" width="200" height="200" /></td>
+                <td>@Html.ActionLink("Edit", "editProduct", new { product_id = pro.product_id })</td>
+                <td>@Html.ActionLink("Delete", "deleteProduct", new { product_id = pro.product_id })</td>
+                <td>@Html.ActionLink("Show Sales", "getProductSales", "sale", new { product_id = pro.product_id }, null)</td>
+            </tr>
+        }
+
+    </table>
+
+    <div>@Html.ActionLink("Add product", "addProduct")</div><br />
+    <div>
+        <input type="button" value="Back" style="background-color: bisque; width:300px;
+                  border-radius:7px;font-weight:bold; font-family: cursive;box-sizing: border-box;"
+               onclick="window.location= '@Url.Action( "AdminDashBoard", "admin")'" />
+    </div>
+
+</fieldset>
+
+<br /><div>
+    @Html.ActionLink("Log out", "login", "admin")
+</div>
+
